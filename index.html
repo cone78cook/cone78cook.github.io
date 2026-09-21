@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PERT图（计划评审技术）在线生成与教程指南。提供专业的项目管理工具介绍、甘特图与PERT图的区别对比、绘制步骤及常见问题解答，帮助您高效规划项目进度。">
+    <meta name="keywords" content="PERT图, 计划评审技术, 项目管理, 甘特图, 关键路径法, 项目进度规划">
+    <title>PERT图-项目管理进度规划与在线生成工具指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --text-main: #1f2937;
+            --text-secondary: #4b5563;
+            --bg-body: #f3f4f6;
+            --bg-card: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --radius: 8px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+        @media (max-width: 768px) {
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 32px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            nav { display: none; } /* Simplified for mobile */
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 80px 0 100px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 12px 32px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+        }
+
+        /* Concept Section */
+        .concept-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+        }
+
+        .concept-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .concept-card h2 {
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .concept-card p {
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Comparison Table */
+        .comparison-wrapper {
+            overflow-x: auto;
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            margin-top: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 16px 24px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        td {
+            color: var(--text-secondary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Tools Section */
+        .tool-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .tool-preview {
+            height: 200px;
+            background-color: #e5e7eb;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tool-content {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-content h3 {
+            margin-bottom: 8px;
+            font-size: 1.25rem;
+        }
+
+        .tool-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .tool-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .tool-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Steps Section */
+        .step-list {
+            counter-reset: step;
+        }
+
+        .step-item {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 40px;
+        }
+
+        .step-item::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 700;
+        }
+
+        .step-item h3 {
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+
+        .step-item p {
+            color: var(--text-secondary);
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-secondary);
+            display: none;
+            border-top: 1px solid transparent;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+            padding-top: 16px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111827;
+            color: #d1d5db;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 30px;
+            text-align: center;
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <a href="#" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            <span>PERT图工坊</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#concept" class="active">什么是PERT图</a></li>
+                <li><a href="#comparison">对比甘特图</a></li>
+                <li><a href="#tools">在线工具</a></li>
+                <li><a href="#guide">绘制步骤</a></li>
+                <li><a href="#faq">常见问题</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>掌握 PERT图，精准掌控项目进度</h1>
+            <p>计划评审技术（Program Evaluation and Review Technique）是项目管理中评估项目工期和优化资源配置的关键工具。无论您是项目经理还是团队负责人，学会使用PERT图都能让复杂的项目计划变得清晰可视。</p>
+            <a href="#tools" class="cta-button">立即查看推荐工具</a>
+        </div>
+    </section>
+
+    <!-- Concept Section -->
+    <section id="concept" class="section">
+        <div class="container">
+            <div class="concept-card">
+                <span class="concept-icon">📊</span>
+                <h2>什么是PERT图？</h2>
+                <p>PERT图，全称为计划评审技术图，是一种用于项目管理的网络图。它通过节点表示任务，箭头表示任务之间的依赖关系，并通常包含“乐观时间”、“悲观时间”和“最可能时间”三个参数来估算任务工期。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section id="comparison" class="section" style="background-color: #fff;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2 style="font-size: 2rem; margin-bottom: 16px;">PERT图 vs 甘特图</h2>
+                <p style="color: var(--text-secondary);">理解两者的区别，选择最适合您当前阶段的管理工具。</p>
+            </div>
+            <div class="comparison-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>对比维度</th>
+                            <th>PERT图</th>
+                            <th>甘特图</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>核心关注点</strong></td>
+                            <td>任务间的逻辑关系、依赖性、关键路径分析。</td>
+                            <td>时间轴、进度排程、资源分配。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>工期估算方式</strong></td>
+                            <td>基于统计学概率（三点估算），处理不确定性。</td>
+                            <td>基于固定时间，适合确定性任务。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>视觉呈现</strong></td>
+                            <td>网络图，节点与箭头，侧重逻辑结构。</td>
+                            <td>条形图，侧重时间跨度。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>适用场景</strong></td>
+                            <td>研发项目、新项目启动、工期不确定时。</td>
+                            <td>执行阶段、进度汇报、日常跟踪。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="tools" class="section">
+        <div class="container">
+            <h2 style="margin-bottom: 30px; font-size: 1.75rem;">常用在线 PERT 图工具推荐</h2>
+            <div class="grid grid-3">
+                <!-- Tool 1 -->
+                <article class="tool-card">
+                    <div class="tool-preview">
+                        <img src="https://picsum.photos/seed/tech1/400/250" alt="Project Management Software Interface">
+                    </div>
+                    <div class="tool-content">
+                        <h3>Microsoft Project</h3>
+                        <p>行业标准的专业项目管理软件，支持复杂的PERT网络图构建，适合大型企业级项目。</p>
+                        <a href="#" class="tool-link">了解更多 &rarr;</a>
+                    </div>
+                </article>
+                <!-- Tool 2 -->
+                <article class="tool-card">
+                    <div class="tool-preview">
+                        <img src="https://picsum.photos/seed/tech2/400/250" alt="Online PERT Generator">
+                    </div>
+                    <div class="tool-content">
+                        <h3>PERT Chart Express</h3>
+                        <p>轻量级的在线工具，专注于生成清晰的PERT网络图，操作简单，无需安装软件。</p>
+                        <a href="#" class="tool-link">了解更多 &rarr;</a>
+                    </div>
+                </article>
+                <!-- Tool 3 -->
+                <article class="tool-card">
+                    <div class="tool-preview">
+                        <img src="https://picsum.photos/seed/tech3/400/250" alt="Project Management Tool">
+                    </div>
+                    <div class="tool-content">
+                        <h3>SmartDraw</h3>
+                        <p>强大的图表绘制软件，内置大量项目管理模板，拖拽即可生成专业的PERT图。</p>
+                        <a href="#" class="tool-link">了解更多 &rarr;</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guide Section -->
+    <section id="guide" class="section" style="background-color: #fff;">
+        <div class="container">
+            <h2 style="margin-bottom: 30px; font-size: 1.75rem;">如何绘制 PERT 图</h2>
+            <div class="grid grid-2">
+                <div class="step-list">
+                    <div class="step-item">
+                        <h3>1. 列出任务清单</h3>
+                        <p>首先将项目分解为具体的任务单元，确保每个任务都是可独立完成的，并明确任务的先后顺序。</p>
+                    </div>
+                    <div class="step-item">
+                        <h3>2. 确定依赖关系</h3>
+                        <p>确定哪些任务必须在其他任务开始之前完成（前置任务），哪些任务可以并行进行。</p>
+                    </div>
+                    <div class="step-item">
+                        <h3>3. 估算时间参数</h3>
+                        <p>为每个任务估算三个时间值：乐观时间（a）、最可能时间（m）和悲观时间（b），并计算期望时间。</p>
+                    </div>
+                </div>
+                <div class="step-list">
+                    <div class="step-item">
+                        <h3>4. 构建网络图</h3>
+                        <p>使用节点表示任务，箭头表示流向。绘制出项目的网络结构，确保逻辑路径清晰无误。</p>
+                    </div>
+                    <div class="step-item">
+                        <h3>5. 计算关键路径</h3>
+                        <p>找出从起点到终点的最长路径，即关键路径。关键路径上的任务决定了项目的最短完成时间。</p>
+                    </div>
+                    <div class="step-item">
+                        <h3>6. 优化与调整</h3>
+                        <p>根据计算结果，识别非关键路径上的浮动时间，从而合理调配资源，优化项目进度。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section">
+        <div class="container">
+            <h2 style="margin-bottom: 30px; font-size: 1.75rem;">常见问题解答</h2>
+            <div class="grid grid-2">
+                <div class="faq-item">
+                    <div class="faq-question">PERT图和CPM图有什么区别？</div>
+                    <div class="faq-answer">PERT图侧重于使用概率统计来估算工期，适用于不确定性较高的项目；CPM（关键路径法）侧重于确定性的工期计算，适用于工期相对明确的工程管理。两者在本质上都是网络图技术。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">如何计算PERT期望时间？</div>
+                    <div class="faq-answer">期望时间的计算公式为：Te = (a + 4m + b) / 6。其中 a 是乐观时间，m 是最可能时间，b 是悲观时间。这个公式考虑了最可能情况发生的概率最大。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">PERT图适合个人使用吗？</div>
+                    <div class="faq-answer">虽然PERT图常用于大型项目，但对于个人开发或学习项目，简单的PERT逻辑也能帮助理清思路。不过对于个人，简单的甘特图或待办清单可能更直观。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">PERT图中的“浮动时间”是什么意思？</div>
+                    <div class="faq-answer">浮动时间是指非关键路径上的任务在不影响项目总工期的情况下，可以推迟开始或延长时间的最大值。利用浮动时间可以灵活安排资源。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>PERT图工坊</h4>
+                <p style="font-size: 0.9rem; line-height: 1.8;">
+                    专注于提供最实用的项目管理知识、工具推荐及操作指南。帮助团队和个人提升项目规划能力，实现高效交付。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>快速链接</h4>
+                <ul>
+                    <li><a href="#concept">什么是PERT图</a></li>
+                    <li><a href="#comparison">PERT vs 甘特图</a></li>
+                    <li><a href="#tools">在线生成工具</a></li>
+                    <li><a href="#guide">绘制教程</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>资源</h4>
+                <ul>
+                    <li><a href="#">项目管理术语表</a></li>
+                    <li><a href="#">案例分享</a></li>
+                    <li><a href="#">联系我们</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 PERT图工坊. All Rights Reserved. 本站仅供知识分享与工具推荐，不涉及具体商业软件的下载。</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // 简单的FAQ折叠交互逻辑
+    document.addEventListener('DOMContentLoaded', function() {
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // 关闭其他已打开的项
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // 切换当前项状态
+                item.classList.toggle('active');
+            });
+        });
+
+        // 简单的平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+  </html>
