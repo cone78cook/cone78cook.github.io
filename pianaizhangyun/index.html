@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>偏爱张芸京 - 唯美音乐视界与个人专辑资料站</title>
+    <meta name="description" content="张芸京个人资料、专辑推荐、经典MV回顾及粉丝互动社区。收录《偏爱》、《偏爱张芸京》等代表作，提供高清图片、歌词赏析及粉丝资讯。">
+    <meta name="keywords" content="偏爱张芸京,张芸京,张芸京专辑,张芸京MV,张芸京歌词,张芸京资料">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #8a2be2;
+            --primary-dark: #4b0082;
+            --secondary-color: #ff69b4;
+            --bg-color: #fdfdfd;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #666666;
+            --border-radius: 8px;
+            --spacing: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            background: url('https://picsum.photos/seed/singer/1920/1080') no-repeat center center/cover;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+            margin: 10px auto 0;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+        }
+
+        /* Bio Section */
+        .bio-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .bio-image {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
+
+        .bio-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .bio-text p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        /* Discography */
+        .album-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .album-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .album-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .album-cover {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .album-info {
+            padding: 20px;
+        }
+
+        .album-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .album-info .year {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .album-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+        }
+
+        /* Lyrics Section */
+        .lyrics-container {
+            background: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .lyrics-container h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-dark);
+        }
+
+        .lyrics-block {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .lyrics-block:last-child {
+            border-bottom: none;
+        }
+
+        .song-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .lyrics-content {
+            font-style: italic;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            height: 200px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #ccc;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+            color: #ccc;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .bio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-wrapper {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container nav-wrapper">
+        <div class="logo">偏爱<span>张芸京</span></div>
+        <nav>
+            <ul>
+                <li><a href="#bio">艺人简介</a></li>
+                <li><a href="#discography">专辑作品</a></li>
+                <li><a href="#lyrics">歌词赏析</a></li>
+                <li><a href="#gallery">图片集锦</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>偏爱张芸京</h1>
+            <p>感受那份独特的声线与倔强。这里收录了关于张芸京的完整资料、经典音乐与独家回忆。</p>
+            <a href="#discography" class="btn">聆听音乐</a>
+        </div>
+    </section>
+
+    <!-- Bio Section -->
+    <section id="bio" class="container">
+        <div class="section-title">
+            <h2>关于张芸京</h2>
+            <p>从《超级女声》走出的实力派唱将，用音乐诠释坚持与热爱</p>
+        </div>
+        <div class="bio-grid">
+            <img src="https://picsum.photos/seed/zhangyijing/400/500" alt="张芸京照片" class="bio-image">
+            <div class="bio-text">
+                <h3>音乐旅程</h3>
+                <p>张芸京，中国内地流行乐女歌手，毕业于福建师范大学。她以独特的声线和极具爆发力的嗓音著称，擅长驾驭多种风格的音乐作品。</p>
+                <p>2009年，张芸京获得湖南卫视《快乐女声》全国总冠军，凭借一首《偏爱》一夜成名。这首歌不仅成为了她的代表作，也成为了华语乐坛流传度极高的经典曲目。出道至今，她始终坚持创作，用音乐记录生活与成长。</p>
+                <p>张芸京的音乐风格多变，既有深情的抒情慢歌，也有摇滚风格的劲爆曲目。她的声音中蕴含着一种坚韧不拔的力量，能够深深触动听众的内心。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discography Section -->
+    <section id="discography" style="background-color: #f9f9f9;">
+        <div class="container">
+            <div class="section-title">
+                <h2>经典专辑</h2>
+                <p>聆听她的音乐历程，感受每一首歌背后的故事</p>
+            </div>
+            <div class="album-grid">
+                <!-- Album 1 -->
+                <article class="album-card">
+                    <img src="https://picsum.photos/seed/album1/300/300" alt="偏爱专辑封面" class="album-cover">
+                    <div class="album-info">
+                        <h4>偏爱张芸京</h4>
+                        <span class="year">2010年</span>
+                        <p>首张同名专辑，收录了脍炙人口的《偏爱》、《偏爱张芸京》等歌曲，奠定了其扎实的唱功基础。</p>
+                        <div>
+                            <span class="tag">流行</span>
+                            <span class="tag">摇滚</span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Album 2 -->
+                <article class="album-card">
+                    <img src="https://picsum.photos/seed/album2/300/300" alt="初演专辑封面" class="album-cover">
+                    <div class="album-info">
+                        <h4>初演</h4>
+                        <span class="year">2012年</span>
+                        <p>第二张专辑，展现了她在音乐风格上的更多探索，从流行转向更具实验性的编曲。</p>
+                        <div>
+                            <span class="tag">独立</span>
+                            <span class="tag">流行</span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Album 3 -->
+                <article class="album-card">
+                    <img src="https://picsum.photos/seed/album3/300/300" alt="张芸京单曲" class="album-cover">
+                    <div class="album-info">
+                        <h4>张芸京</h4>
+                        <span class="year">2014年</span>
+                        <p>第三张专辑，回归初心，用最纯粹的声音讲述故事，包含多首高质量的单曲。</p>
+                        <div>
+                            <span class="tag">抒情</span>
+                            <span class="tag">摇滚</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lyrics Section -->
+    <section id="lyrics" class="container">
+        <div class="section-title">
+            <h2>歌词赏析</h2>
+            <p>重温那些刻在DNA里的旋律</p>
+        </div>
+        <div class="lyrics-container">
+            <div class="lyrics-block">
+                <div class="song-title">偏爱 (节选)</div>
+                <div class="lyrics-content">
+                    我对你偏爱<br>
+                    哪怕是谎言我也能接受<br>
+                    我对你偏爱<br>
+                    是一种无法言说的执着<br>
+                    <br>
+                    不管结局如何<br>
+                    我只想和你一起走<br>
+                    这份偏爱<br>
+                    永远不会变
+                </div>
+            </div>
+            <div class="lyrics-block">
+                <div class="song-title">偏爱张芸京 (节选)</div>
+                <div class="lyrics-content">
+                    走过千山万水<br>
+                    哪怕路途遥远<br>
+                    我的心依然为你停留<br>
+                    在这个喧嚣的世界<br>
+                    只有你能让我安静
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" style="background-color: #f9f9f9;">
+        <div class="container">
+            <div class="section-title">
+                <h2>精彩瞬间</h2>
+                <p>记录舞台上的每一个高光时刻</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="https://picsum.photos/seed/concert1/300/300" alt="演唱会现场"></div>
+                <div class="gallery-item"><img src="https://picsum.photos/seed/concert2/300/300" alt="音乐节现场"></div>
+                <div class="gallery-item"><img src="https://picsum.photos/seed/concert3/300/300" alt="后台花絮"></div>
+                <div class="gallery-item"><img src="https://picsum.photos/seed/concert4/300/300" alt="写真拍摄"></div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container footer-content">
+        <div class="logo" style="color: white; margin-bottom: 10px;">偏爱<span style="color: var(--secondary-color);">张芸京</span></div>
+        <div class="footer-links">
+            <a href="#bio">简介</a>
+            <a href="#discography">专辑</a>
+            <a href="#lyrics">歌词</a>
+            <a href="#">粉丝社区</a>
+        </div>
+        <p class="copyright">本站为非商业性粉丝资料站，所有资源及图片版权归原作者所有。仅供学习与交流使用。</p>
+    </div>
+</footer>
+
+</body>
+</html>
